@@ -50,5 +50,4 @@ jobs:
               --imageUuid 'docker:tanutsun/workshop-docker-epxress-circleci:latest' \
               --batch_size 3 --start_first \
               --auto_complete --timeout 600
-              /
       - run: echo Done
