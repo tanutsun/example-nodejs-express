@@ -20,7 +20,7 @@ function format(seconds) {
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.status(200).json({
-    name: "new state"
+    name: "new state",
     env: config.env,
     uptime: format(process.uptime()),
     networkInterfaces: ifaces
