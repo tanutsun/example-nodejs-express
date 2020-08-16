@@ -27,25 +27,25 @@ jobs:
       - run: 
           name: "Build docker and push to docker hub only master or staging"
           command: |
-            if [ $CIRCLE_BRANCH == "master" ]; then
-              cp Dockerfile.production Dockerfile
-              docker build -t tanutsun/workshop-docker-epxress-circleci:latest .
-              docker push tanutsun/workshop-docker-epxress-circleci:latest
-            elif [ $CIRCLE_BRANCH == "staging" ]; then
-              docker build -t tanutsun/workshop-docker-epxress-circleci-staging:latest .
-              docker push tanutsun/workshop-docker-epxress-circleci-staging:latest
-            else then
-              echo "Branch : $CIRCLE_BRANCH"
-            fi
+              if [ $CIRCLE_BRANCH == "master" ]; then
+                cp Dockerfile.production Dockerfile
+                docker build -t tanutsun/workshop-docker-epxress-circleci:latest .
+                docker push tanutsun/workshop-docker-epxress-circleci:latest
+              elif [ $CIRCLE_BRANCH == "staging" ]; then
+                docker build -t tanutsun/workshop-docker-epxress-circleci-staging:latest .
+                docker push tanutsun/workshop-docker-epxress-circleci-staging:latest
+              else then
+                echo "Branch : $CIRCLE_BRANCH"
+              fi;
         - run: 
             name: "Update Rancher"
             command: |
-              docker run --rm -it \
-                -e CATTLE_ACCESS_KEY=$CATTLE_ACCESS_KEY
-                -e CATTLE_SECRET_KEY=$CATTLE_SECRET_KEY
-                -e CATTLE_URL=$CATTLE_URL
-                etlweather/gaucho query $RANCHER_EXAMPLE_NODEJS
-                --imageUuid=docker:tanutsun/workshop-docker-epxress-circleci:latest
-                --batch_size=3   --start_first
-                --auto_complete  --timeout=3000
+                docker run --rm -it \
+                  -e CATTLE_ACCESS_KEY=$CATTLE_ACCESS_KEY
+                  -e CATTLE_SECRET_KEY=$CATTLE_SECRET_KEY
+                  -e CATTLE_URL=$CATTLE_URL
+                  etlweather/gaucho query $RANCHER_EXAMPLE_NODEJS
+                  --imageUuid=docker:tanutsun/workshop-docker-epxress-circleci:latest
+                  --batch_size=3   --start_first
+                  --auto_complete  --timeout=3000;
       - run: echo Done
