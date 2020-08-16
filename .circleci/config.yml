@@ -1,6 +1,6 @@
 
 version: 2
-  job: 
+  jobs: 
     build: 
       docker: 
         - image: circleci/node:8.11.1-stretch
