@@ -46,6 +46,8 @@ jobs:
                 -e CATTLE_URL="$CATTLE_URL" \
                 etlweather/gaucho query $RANCHER_EXAMPLE_NODEJS \
                 --imageUuid=docker:tanutsun/workshop-docker-epxress-circleci:latest \
-                --batch_size=3  --start_first \
-                --auto_complete --timeout=3000
+                --batch_size=3 \
+                --start_first \
+                --auto_complete \
+                --timeout=3000
       - run: echo Done
