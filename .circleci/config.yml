@@ -111,7 +111,7 @@ jobs:
                 -e CATTLE_ACCESS_KEY="$CATTLE_ACCESS_KEY" \
                 -e CATTLE_SECRET_KEY="$CATTLE_SECRET_KEY" \
                 -e CATTLE_URL="$CATTLE_URL" \
-                etlweather/gaucho query $RANCHER_EXAMPLE_NODEJS \
+                etlweather/gaucho upgrade $RANCHER_EXAMPLE_NODEJS \
                 --imageUuid=docker:tanutsun/workshop-docker-epxress-circleci:latest \
                 --batch_size 3 \
                 --start_first \
