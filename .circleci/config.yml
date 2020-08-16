@@ -31,7 +31,7 @@ jobs:
                 cp Dockerfile.production Dockerfile
                 docker build -t tanutsun/workshop-docker-epxress-circleci:latest .
                 docker push tanutsun/workshop-docker-epxress-circleci:latest
-              elif [ "${CIRCLE_BRANCH}: == "staging" ]; then
+              elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
                 docker build -t tanutsun/workshop-docker-epxress-circleci-staging:latest .
                 docker push tanutsun/workshop-docker-epxress-circleci-staging:latest
               else
